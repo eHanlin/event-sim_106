@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>sim_106</title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link type="text/css" rel="stylesheet" href="./css/event_sim_106.css" />
 </head>
 
@@ -28,22 +29,22 @@
 
       <div class="book-intro">
         <img class="banner" src="./img/會考內頁.png">
-        <a href="/key/MOCK106FEXAM/SalesPlans/productSets.html">
+        <a class="btn1" href="/key/MOCK106FEXAM/SalesPlans/productSets.html">
            <img class="gameOver1" src="./img/比試結束.png">
         </a>
-        <a href="/inputsn.html">
+        <a class="btn2" href="/inputsn.html">
            <img class="ranking" src="./img/王者排行.png"> 
         </a>
-        <a href="/inputsn.html">
+        <a class="btn3" href="/inputsn.html">
            <img class="gameOver2" src="./img/比試結束.png"> 
         </a>
-        <a href="/inputsn.html">
+        <a class="btn4" href="/inputsn.html">
            <img class="notYet1" src="./img/尚未公布.png"> 
         </a>
-        <a href="/inputsn.html">
+        <a class="btn5" href="/inputsn.html">
            <img class="into" src="./img/進入擂台.png"> 
         </a>
-        <a href="/inputsn.html">
+        <a class="btn6" href="/inputsn.html">
            <img class="notYet2" src="./img/尚未公布.png"> 
         </a>
       </div>
@@ -51,6 +52,29 @@
   </div>
   <footer id="ehanlin-footer"></footer>
   <style type="text/css" rel="stylesheet"></style>
+
+  <script type="text/javascript">
+    var now = new Date().getTime();
+    if (now > 1502707182230) {
+      $('.gameOver1').remove();
+      $('.btn1').append(`<img class="gameOver1" src="./img/進入擂台.png">`);
+
+      $('.gameOver2').remove();
+      $('.btn3').append(`<img class="gameOver2" src="./img/進入擂台.png">`);
+
+      $('.into').remove();
+      $('.btn5').append(`<img class="into" src="./img/進入擂台.png">`);
+
+      $('.ranking').remove();
+      $('.btn2').append(`<img class="ranking" src="./img/尚未公布.png">`);
+
+      $('.notYet1').remove();
+      $('.btn4').append(`<img class="notYet1" src="./img/尚未公布.png">`);
+
+      $('.notYet2').remove();
+      $('.btn6').append(`<img class="notYet2" src="./img/尚未公布.png">`);
+    }
+  </script>
 
   <script type="text/javascript" src="./lib/underscore/underscore-min.js"></script>
   <script type="text/javascript" src="./lib/moment/min/moment.min.js"></script>
