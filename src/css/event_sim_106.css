@@ -103,6 +103,7 @@ html {
   bottom: 1750px;
   left: -280px;
   right: 0;
+  box-shadow: 8px 8px 5px grey;
 }
 
 .ranking {
@@ -113,6 +114,7 @@ html {
   bottom: 1750px;
   left: 280px;
   right: 0;
+  box-shadow: 8px 8px 5px grey;
 }
 
 .gameOver2 {
@@ -123,6 +125,7 @@ html {
   bottom: 1437px;
   left: -280px;
   right: 0;
+  box-shadow: 8px 8px 5px grey;
 }
 
 .notYet1 {
@@ -133,6 +136,7 @@ html {
   bottom: 1437px;
   left: 280px;
   right: 0;
+  box-shadow: 8px 8px 5px grey;
 }
 
 .into {
@@ -143,6 +147,7 @@ html {
   bottom: 1117px;
   left: -280px;
   right: 0;
+  box-shadow: 8px 8px 5px grey;
 }
 
 .notYet2 {
@@ -153,6 +158,7 @@ html {
   bottom: 1117px;
   left: 280px;
   right: 0;
+  box-shadow: 8px 8px 5px grey;
 }
 div,
 table,
