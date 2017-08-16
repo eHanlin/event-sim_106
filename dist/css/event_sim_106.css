@@ -95,7 +95,7 @@ html {
   clear: both;
 }
 
-.gameOver1 {
+.block0 .btnA img {
   display: block;
   width: 130px;
   position: absolute;
@@ -106,7 +106,7 @@ html {
   box-shadow: 8px 8px 5px grey;
 }
 
-.ranking {
+.block0 .btnB img {
   display: block;
   width: 130px;
   position: absolute;
@@ -117,7 +117,7 @@ html {
   box-shadow: 8px 8px 5px grey;
 }
 
-.gameOver2 {
+.block1 .btnA img {
   display: block;
   width: 130px;
   position: absolute;
@@ -128,7 +128,7 @@ html {
   box-shadow: 8px 8px 5px grey;
 }
 
-.notYet1 {
+.block1 .btnB img {
   display: block;
   width: 130px;
   position: absolute;
@@ -139,7 +139,7 @@ html {
   box-shadow: 8px 8px 5px grey;
 }
 
-.into {
+.block2 .btnA img {
   display: block;
   width: 130px;
   position: absolute;
@@ -150,7 +150,7 @@ html {
   box-shadow: 8px 8px 5px grey;
 }
 
-.notYet2 {
+.block2 .btnB img {
   display: block;
   width: 130px;
   position: absolute;

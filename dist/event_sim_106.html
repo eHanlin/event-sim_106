@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>sim_106</title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link type="text/css" rel="stylesheet" href="./css/event_sim_106.css" />
 </head>
 
@@ -28,29 +29,59 @@
 
       <div class="book-intro">
         <img class="banner" src="./img/會考內頁.png">
-        <a href="/key/MOCK106FEXAM/SalesPlans/productSets.html">
-           <img class="gameOver1" src="./img/比試結束.png">
-        </a>
-        <a href="/inputsn.html">
-           <img class="ranking" src="./img/王者排行.png"> 
-        </a>
-        <a href="/inputsn.html">
-           <img class="gameOver2" src="./img/比試結束.png"> 
-        </a>
-        <a href="/inputsn.html">
-           <img class="notYet1" src="./img/尚未公布.png"> 
-        </a>
-        <a href="/inputsn.html">
-           <img class="into" src="./img/進入擂台.png"> 
-        </a>
-        <a href="/inputsn.html">
-           <img class="notYet2" src="./img/尚未公布.png"> 
-        </a>
+
+        <div class="block0"></div>
+        <div class="block1"></div>
+        <div class="block2"></div>
+
       </div>
     </div>
   </div>
   <footer id="ehanlin-footer"></footer>
   <style type="text/css" rel="stylesheet"></style>
+
+  <script type="text/javascript">
+    $(function () {
+      var now = new Date();
+      var getBoard = function () {
+        var $this = $(this);
+        var year = $this.data("year");
+        var volume = $this.data("volume");
+        var number = $this.data("number");
+        Sim.getBoard(year, volume, number);
+      };
+
+      Sim.getTermtest(106, "complete", function (schedule) {
+        _.each(schedule, function (it, idx) {
+
+          if (now < it.start) {
+            $(".block" + idx).append("<a class= btnA>"
+              + "<img src='./img/尚未開始.png'></a>"
+              + "<a class='btnB'>"
+              + "<img src='./img/尚未公布.png'></a>")
+
+          } else if (now > it.start && now < it.end) {
+            $(".block" + idx).append("<a class= btnA href='/key/MOCK106FEXAM/SalesPlans/productSets.html?check=false'>"
+              + "<img src='./img/進入擂台.png'></a>"
+              + "<a class='btnB'>"
+              + "<img src='./img/尚未公布.png'></a>")
+
+          } else if (now > it.end && now < it.result) {
+            $(".block" + idx).append("<a class= btnA>"
+              + "<img src='./img/比試結束.png'></a>"
+              + "<a class='btnB'>"
+              + "<img src='./img/尚未公布.png'></a>")
+
+          } else if (now > it.result) {
+            $(".block" + idx).append("<a class= btnA>"
+              + "<img src='./img/比試結束.png'></a>"
+              + "<a class='btnB'>"
+              + "<img src='./img/王者排行.png'></a>")
+          }
+        })
+      });
+    });
+  </script>
 
   <script type="text/javascript" src="./lib/underscore/underscore-min.js"></script>
   <script type="text/javascript" src="./lib/moment/min/moment.min.js"></script>
