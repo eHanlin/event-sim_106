@@ -16,44 +16,44 @@ $(function() {
           "<a class='btnA'>" +
             "<img src=" +
             rootPath +
-            "'/img/尚未開始.png'></a>" +
+            "/img/尚未開始.png></a>" +
             "<a class='btnB'>" +
             "<img src=" +
             rootPath +
-            "'/img/尚未公布.png'></a>"
+            "/img/尚未公布.png></a>"
         );
       } else if (now > it.start && now < it.end) {
         $(".block" + idx).append(
           "<a class='btnA' href='/key/MOCK106FEXAM/SalesPlans/productSets.html?check=false'>" +
             "<img src=" +
             rootPath +
-            "'/img/進入擂台.png'></a>" +
+            "/img/進入擂台.png></a>" +
             "<a class='btnB'>" +
             "<img src=" +
             rootPath +
-            "'/img/尚未公布.png'></a>"
+            "/img/尚未公布.png></a>"
         );
       } else if (now > it.end && now < it.result) {
         $(".block" + idx).append(
           "<a class='btnA'>" +
             "<img src=" +
             rootPath +
-            "'/img/比試結束.png'></a>" +
+            "/img/比試結束.png></a>" +
             "<a class='btnB'>" +
             "<img src=" +
             rootPath +
-            "'/img/尚未公布.png'></a>"
+            "/img/尚未公布.png></a>"
         );
       } else if (now > it.result) {
         $(".block" + idx).append(
           "<a class='btnA'>" +
             "<img src=" +
             rootPath +
-            "'/img/比試結束.png'></a>" +
+            "/img/比試結束.png></a>" +
             "<a class='btnB'>" +
             "<img src=" +
             rootPath +
-            "'/img/王者排行.png'></a>"
+            "/img/王者排行.png></a>"
         );
       }
     });
