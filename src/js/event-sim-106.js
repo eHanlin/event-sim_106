@@ -1,5 +1,6 @@
 $(function() {
   var now = new Date();
+  var rootPath = document.getElementById("rootPath").getAttribute("data-value");
   var getBoard = function() {
     var $this = $(this);
     var year = $this.data("year");
