@@ -1,4 +1,5 @@
 $(function() {
+  console.log("-----------------開始-------------------");
   var now = new Date();
   var rootPath = document.getElementById("rootPath").getAttribute("data-value");
   var getBoard = function() {
@@ -8,6 +9,7 @@ $(function() {
     var number = $this.data("number");
     Sim.getBoard(year, volume, number);
   };
+  console.log("-----------------1-------------------");
 
   var ajaxGet = function(url, param, success, error) {
     return $.ajax({
@@ -47,7 +49,9 @@ $(function() {
     });
   };
 
-  $(".block0 .btnB.rank").on("click", function() {
+  console.log("-----------------2-------------------");
+  $(".block0 .btnB").on("click", function() {
+    console.log("===============> .block0 .btnB <================");
     ajaxGet(
       "https://www.ehanlin.com.tw/sim_106/hero?year=106&volume=7&number=1",
       null,
@@ -72,7 +76,9 @@ $(function() {
   });
 
   Sim.getTermtest(106, "complete", function(schedule) {
+    console.log("-----------------3-------------------");
     _.each(schedule, function(it, idx) {
+      console.log("-----------------4-------------------");
       if (now < it.start) {
         $(".block" + idx).append(
           "<a class='btnA'>" +
@@ -112,7 +118,7 @@ $(function() {
             "<img src=" +
             rootPath +
             "/img/比試結束.png></a>" +
-            "<a class='btnB rank'>" +
+            "<a class='btnB'>" +
             "<img src=" +
             rootPath +
             "/img/王者排行.png></a>"
