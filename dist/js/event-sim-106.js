@@ -47,31 +47,6 @@ $(function() {
     });
   };
 
-  $(".block0 .btnB ").on("click", function() {
-    console.log("===============> .block0 .btnB <================");
-    ajaxGet(
-      "https://www.ehanlin.com.tw/sim_106/hero?year=106&volume=7&number=1",
-      null,
-      function(jsonData) {
-        let info;
-
-        for (let index = 0; index < jsonData.length; index++) {
-          var userName = jsonData[index].userName;
-          var userSchool = jsonData[index].school;
-
-          console.log(jsonData[index].userName);
-          console.log(jsonData[index].school);
-
-          let userInfoList = `<span class="number">第${index +
-            1}名</span><p class='userList'> ${userName}&nbsp;&nbsp;${userSchool}</p>`;
-          info += userInfoList;
-          blockFunc(info.replace("undefined", ""));
-        }
-      },
-      function() {}
-    );
-  });
-
   Sim.getTermtest(106, "complete", function(schedule) {
     _.each(schedule, function(it, idx) {
       if (now < it.start) {
@@ -114,11 +89,36 @@ $(function() {
             rootPath +
             "/img/比試結束.png></span>" +
             "<span class='btnB'>" +
-            "<input type='button' style='background-image:" +
+            "<img src=" +
             rootPath +
-            "/img/王者排行.png;'></span>"
+            "/img/王者排行.png></span>"
         );
       }
     });
+  });
+
+  $(".block0 .btnB img").on("click", function() {
+    console.log("===============> .block0 .btnB <================");
+    ajaxGet(
+      "https://www.ehanlin.com.tw/sim_106/hero?year=106&volume=7&number=1",
+      null,
+      function(jsonData) {
+        let info;
+
+        for (let index = 0; index < jsonData.length; index++) {
+          var userName = jsonData[index].userName;
+          var userSchool = jsonData[index].school;
+
+          console.log(jsonData[index].userName);
+          console.log(jsonData[index].school);
+
+          let userInfoList = `<span class="number">第${index +
+            1}名</span><p class='userList'> ${userName}&nbsp;&nbsp;${userSchool}</p>`;
+          info += userInfoList;
+          blockFunc(info.replace("undefined", ""));
+        }
+      },
+      function() {}
+    );
   });
 });
