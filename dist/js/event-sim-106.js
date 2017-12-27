@@ -47,32 +47,29 @@ $(function() {
     });
   };
 
-  var clickBtnB = function() {
-    $(".btnB.rank").on("click", function() {
-      ajaxGet(
-        "https://www.ehanlin.com.tw/sim_106/hero?year=106&volume=7&number=1",
-        null,
-        function(jsonData) {
-          let info;
+  $(".btnB.rank").on("click", function() {
+    ajaxGet(
+      "https://www.ehanlin.com.tw/sim_106/hero?year=106&volume=7&number=1",
+      null,
+      function(jsonData) {
+        let info;
 
-          for (let index = 0; index < jsonData.length; index++) {
-            var userName = jsonData[index].userName;
-            var userSchool = jsonData[index].school;
+        for (let index = 0; index < jsonData.length; index++) {
+          var userName = jsonData[index].userName;
+          var userSchool = jsonData[index].school;
 
-            console.log(jsonData[index].userName);
-            console.log(jsonData[index].school);
+          console.log(jsonData[index].userName);
+          console.log(jsonData[index].school);
 
-            let userInfoList = `<span class="number">第${index +
-              1}名</span><p class='userList'> ${userName}&nbsp;&nbsp;${userSchool}</p>`;
-            info += userInfoList;
-            blockFunc(info.replace("undefined", ""));
-          }
-        },
-        function() {}
-      );
-    });
-  };
-  clickBtnB();
+          let userInfoList = `<span class="number">第${index +
+            1}名</span><p class='userList'> ${userName}&nbsp;&nbsp;${userSchool}</p>`;
+          info += userInfoList;
+          blockFunc(info.replace("undefined", ""));
+        }
+      },
+      function() {}
+    );
+  });
 
   Sim.getTermtest(106, "complete", function(schedule) {
     _.each(schedule, function(it, idx) {
