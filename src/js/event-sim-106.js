@@ -1,5 +1,4 @@
 $(function() {
-  console.log("-----------------開始-------------------");
   var now = new Date();
   var rootPath = document.getElementById("rootPath").getAttribute("data-value");
   var getBoard = function() {
@@ -9,7 +8,6 @@ $(function() {
     var number = $this.data("number");
     Sim.getBoard(year, volume, number);
   };
-  console.log("-----------------1-------------------");
 
   var ajaxGet = function(url, param, success, error) {
     return $.ajax({
@@ -49,7 +47,6 @@ $(function() {
     });
   };
 
-  console.log("-----------------2-------------------");
   $(".block0 .btnB img").on("click", function() {
     console.log("===============> .block0 .btnB <================");
     ajaxGet(
@@ -76,9 +73,7 @@ $(function() {
   });
 
   Sim.getTermtest(106, "complete", function(schedule) {
-    console.log("-----------------3-------------------");
     _.each(schedule, function(it, idx) {
-      console.log("-----------------4-------------------");
       if (now < it.start) {
         $(".block" + idx).append(
           "<a class='btnA'>" +
