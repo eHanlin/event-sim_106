@@ -47,7 +47,7 @@ $(function() {
     });
   };
 
-  $(".block0 .btnB img").on("click", function() {
+  $(".block0 .btnB").on("click", function() {
     console.log("===============> .block0 .btnB <================");
     ajaxGet(
       "https://www.ehanlin.com.tw/sim_106/hero?year=106&volume=7&number=1",
@@ -81,7 +81,7 @@ $(function() {
             rootPath +
             "/img/尚未開始.png></span>" +
             "<span class='btnB'>" +
-            "<img src=" +
+            "<input type='image' src=" +
             rootPath +
             "/img/尚未公布.png></span>"
         );
@@ -92,7 +92,7 @@ $(function() {
             rootPath +
             "/img/進入擂台.png></span>" +
             "<span class='btnB'>" +
-            "<img src=" +
+            "<input type='image' src=" +
             rootPath +
             "/img/尚未公布.png></span>"
         );
@@ -103,7 +103,7 @@ $(function() {
             rootPath +
             "/img/比試結束.png></span>" +
             "<span class='btnB'>" +
-            "<img src=" +
+            "<input type='image' src=" +
             rootPath +
             "/img/尚未公布.png></span>"
         );
@@ -114,7 +114,7 @@ $(function() {
             rootPath +
             "/img/比試結束.png></span>" +
             "<span class='btnB'>" +
-            "<img src=" +
+            "<input type='image' src=" +
             rootPath +
             "/img/王者排行.png></span>"
         );
