@@ -97,7 +97,7 @@ $(function() {
     });
   });
 
-  $(".block0 .btnB img").on("click", function() {
+  $(".block0 .btnB img").click(function() {
     console.log("===============> .block0 .btnB <================");
     ajaxGet(
       "https://www.ehanlin.com.tw/sim_106/hero?year=106&volume=7&number=1",
