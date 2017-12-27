@@ -29,7 +29,7 @@ $(function() {
         "<div class='leader-boards'><span class='spanA'>106學年模擬會考 第一次全科1-4冊<br><br>" +
         info +
         "</span>" +
-        "<img class='listImgA' src='./img/英雄榜背景.png'>" +
+        "<img class='listImgA' src='/img/英雄榜背景.png'>" +
         "</div>",
       css: {
         top: ($(window).height() - 490) / 2 + "px",
