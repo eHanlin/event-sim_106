@@ -102,10 +102,6 @@ $(function() {
           for (let index = 0; index < jsonData.length; index++) {
             var userName = jsonData[index].userName;
             var userSchool = jsonData[index].school;
-
-            console.log(jsonData[index].userName);
-            console.log(jsonData[index].school);
-
             let userInfoList = `<span class="number">第${index +
               1}名</span><p class='userList'> ${userName}&nbsp;&nbsp;${userSchool}</p>`;
             info += userInfoList;
