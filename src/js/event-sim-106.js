@@ -58,6 +58,7 @@ $(function() {
       }
     });
   });
+  clickBtnB();
 });
 
 var ajaxGet = function(url, param, success, error) {
@@ -123,4 +124,3 @@ var clickBtnB = function() {
     );
   });
 };
-clickBtnB();
