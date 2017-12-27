@@ -47,78 +47,71 @@ $(function() {
     });
   };
 
+  // let rootPath =
+  //   "https://s3-ap-northeast-1.amazonaws.com/ehanlin-web-resource/event-sim_106/0.4.0-SNAPSHOT";
   Sim.getTermtest(106, "complete", function(schedule) {
     _.each(schedule, function(it, idx) {
       if (now < it.start) {
         $(".block" + idx).append(
-          "<span class='btnA'>" +
-            "<img src=" +
-            rootPath +
-            "/img/尚未開始.png></span>" +
-            "<span class='btnB'>" +
-            "<img src=" +
-            rootPath +
-            "/img/尚未公布.png></span>"
+          `
+          <a class='btnA'>
+          <img src='${rootPath}/img/尚未開始.png'></a>
+          <a class='btnB'>
+          <img src='${rootPath}/img/尚未公布.png'></a>
+          `
         );
       } else if (now > it.start && now < it.end) {
         $(".block" + idx).append(
-          "<span class='btnA' href='/key/MOCK106FEXAM/SalesPlans/productSets.html?check=false'>" +
-            "<img src=" +
-            rootPath +
-            "/img/進入擂台.png></span>" +
-            "<span class='btnB'>" +
-            "<img src=" +
-            rootPath +
-            "/img/尚未公布.png></span>"
+          `
+          <a class='btnA' href='/key/MOCK106FEXAM/SalesPlans/productSets.html?check=false'>
+            <img src='${rootPath}/img/進入擂台.png'></a> 
+          <a class='btnB'>
+            <img src='${rootPath}/img/尚未公布.png'></a>
+          `
         );
       } else if (now > it.end && now < it.result) {
         $(".block" + idx).append(
-          "<span class='btnA'>" +
-            "<img src=" +
-            rootPath +
-            "/img/比試結束.png></span>" +
-            "<span class='btnB'>" +
-            "<img src=" +
-            rootPath +
-            "/img/尚未公布.png></span>"
+          `
+          <a class='btnA'>
+          <img src='${rootPath}/img/比試結束.png'></a>
+          <a class='btnB'>
+          <img src='${rootPath}/img/尚未公布.png'></a>
+          `
         );
       } else if (now > it.result) {
         $(".block" + idx).append(
-          "<span class='btnA'>" +
-            "<img src=" +
-            rootPath +
-            "/img/比試結束.png></span>" +
-            "<span class='btnB'>" +
-            "<img src=" +
-            rootPath +
-            "/img/王者排行.png></span>"
+          `
+          <a class='btnA'>
+          <img src='${rootPath}/img/比試結束.png'></a>
+          <a class='btnB'>
+          <img src='${rootPath}/img/王者排行.png'></a>
+          `
         );
       }
     });
-  });
 
-  $(".block0 .btnB img").click(function() {
-    console.log("===============> .block0 .btnB <================");
-    ajaxGet(
-      "https://www.ehanlin.com.tw/sim_106/hero?year=106&volume=7&number=1",
-      null,
-      function(jsonData) {
-        let info;
+    $(".block0 .btnB img").on("click", function() {
+      ajaxGet(
+        "https://www.ehanlin.com.tw/sim_106/hero?year=106&volume=7&number=1",
+        null,
+        function(jsonData) {
+          let info;
 
-        for (let index = 0; index < jsonData.length; index++) {
-          var userName = jsonData[index].userName;
-          var userSchool = jsonData[index].school;
+          for (let index = 0; index < jsonData.length; index++) {
+            var userName = jsonData[index].userName;
+            var userSchool = jsonData[index].school;
 
-          console.log(jsonData[index].userName);
-          console.log(jsonData[index].school);
+            console.log(jsonData[index].userName);
+            console.log(jsonData[index].school);
 
-          let userInfoList = `<span class="number">第${index +
-            1}名</span><p class='userList'> ${userName}&nbsp;&nbsp;${userSchool}</p>`;
-          info += userInfoList;
-          blockFunc(info.replace("undefined", ""));
-        }
-      },
-      function() {}
-    );
+            let userInfoList = `<span class="number">第${index +
+              1}名</span><p class='userList'> ${userName}&nbsp;&nbsp;${userSchool}</p>`;
+            info += userInfoList;
+            blockFunc(info.replace("undefined", ""));
+          }
+        },
+        function() {}
+      );
+    });
   });
 });
