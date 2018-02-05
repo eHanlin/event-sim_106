@@ -63,14 +63,12 @@ $(function() {
           `
         );
       } else if (now > it.start && now < it.end) {
-        $(".block" + idx).append(
-          `
+        $(".block" + idx).append(`
           <a class='btnA' href='/key/MOCK106FEXAM/SalesPlans/productSets.html?check=false'>
-            <img src='${rootPath}/img/進入擂台.png'></a> 
+            <img style="hover:box-shadow: 2px 2px 1px grey;" src='${rootPath}/img/進入擂台.png'></a> 
           <a class='btnB'>
             <img src='${rootPath}/img/尚未公布.png'></a>
-          `
-        );
+          `);
       } else if (now > it.end && now < it.result) {
         $(".block" + idx).append(
           `
@@ -81,14 +79,12 @@ $(function() {
           `
         );
       } else if (now > it.result) {
-        $(".block" + idx).append(
-          `
+        $(".block" + idx).append(`
           <a class='btnA'>
           <img src='${rootPath}/img/比試結束.png'></a>
           <a class='btnB'>
-          <img src='${rootPath}/img/王者排行.png'></a>
-          `
-        );
+          <img style="hover:box-shadow: 2px 2px 1px grey;" src='${rootPath}/img/王者排行.png'></a>
+          `);
       }
     });
 
