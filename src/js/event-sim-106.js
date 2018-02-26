@@ -107,5 +107,25 @@ $(function () {
         function () {}
       )
     })
+
+    $('.block1 .btnB img').on('click', function () {
+      ajaxGet(
+        'https://www.ehanlin.com.tw/sim_106/hero?year=106&volume=7&number=2',
+        null,
+        function (jsonData) {
+          let info
+
+          for (let index = 0; index < jsonData.length; index++) {
+            var userName = jsonData[index].userName
+            var userSchool = jsonData[index].school
+            let userInfoList = `<span class="number">第${index +
+              1}名</span><p class='userList'> ${userName}&nbsp;&nbsp;${userSchool}</p>`
+            info += userInfoList
+            blockFunc(info.replace('undefined', ''))
+          }
+        },
+        function () {}
+      )
+    })
   })
 })
