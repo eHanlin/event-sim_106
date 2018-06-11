@@ -1,0 +1,55 @@
+{
+  "_from": "gulp-template-util",
+  "_id": "gulp-template-util@0.0.2",
+  "_inBundle": false,
+  "_integrity": "sha1-F7bLOKA+GGm2AJVRG8hCRHoD6Gk=",
+  "_location": "/gulp-template-util",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "gulp-template-util",
+    "name": "gulp-template-util",
+    "escapedName": "gulp-template-util",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/gulp-template-util/-/gulp-template-util-0.0.2.tgz",
+  "_shasum": "17b6cb38a03e1869b60095511bc842447a03e869",
+  "_spec": "gulp-template-util",
+  "_where": "/Users/hl/Applications/event/event-sim_106",
+  "author": {
+    "name": "hotdog929",
+    "email": "hotdog929@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/hotdog929/gulp-template-util/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "event-stream": "^3.3.2",
+    "q": "^1.4.1"
+  },
+  "deprecated": false,
+  "description": "util for gulp-template",
+  "devDependencies": {
+    "mocha": "^2.4.5"
+  },
+  "homepage": "https://github.com/hotdog929/gulp-template-util#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "name": "gulp-template-util",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hotdog929/gulp-template-util.git"
+  },
+  "scripts": {
+    "test": "node_modules/mocha/bin/mocha"
+  },
+  "version": "0.0.2"
+}
