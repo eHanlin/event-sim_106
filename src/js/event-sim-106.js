@@ -25,8 +25,7 @@ $(function () {
 
   var blockFunc = function (info) {
     $.blockUI({
-      message:
-        "<div class='leader-boards'><span class='spanA'>106學年模擬會考 第一次全科1-4冊<br><br>" +
+      message: "<div class='leader-boards'><span class='spanA'>106學年模擬會考 第一次全科1-4冊<br><br>" +
         info +
         '</span>' +
         "<img class='listImgA' src='" +
@@ -44,7 +43,10 @@ $(function () {
         height: '490',
         cursor: 'default'
       },
-      overlayCSS: { backgroundColor: '#000', opacity: '0.4' },
+      overlayCSS: {
+        backgroundColor: '#000',
+        opacity: '0.4'
+      },
       onOverlayClick: $.unblockUI
     })
   }
