@@ -1,31 +1,22 @@
-var gulp = require('gulp')
-var fs = require('fs')
-var del = require('del')
-var Q = require('q')
-var util = require('gulp-template-util')
+const gulp = require('gulp')
+const del = require('del')
+const Q = require('q')
+const util = require('gulp-template-util')
+const gcPub = require('gulp-gcloud-publish')
+const Storage = require('@google-cloud/storage')
 
-function libTask (dest) {
-  return function () {
-    var packageJson = JSON.parse(
-      fs.readFileSync('package.json', 'utf8').toString()
-    )
-    if (!packageJson.dependencies) {
-      packageJson.dependencies = {}
-    }
-    var webLibModules = []
-    for (var module in packageJson.dependencies) {
-      webLibModules.push('node_modules/' + module + '/**/*')
-    }
-    return gulp
-      .src(webLibModules, {
-        base: 'node_modules/'
-      })
-      .pipe(gulp.dest(dest))
-  }
-}
+let bucketName = 'tutor-events'
+let projectId = 'tutor-204108'
+let keyFilename = './tutor.json'
+let projectName = 'sim_106'
 
-function copyStaticTask (dest) {
-  return function () {
+const storage = new Storage({
+  projectId: projectId,
+  keyFilename: keyFilename
+})
+
+let copyStaticTask = dest => {
+  return () => {
     return gulp
       .src(
       [
@@ -42,23 +33,55 @@ function copyStaticTask (dest) {
   }
 }
 
-function cleanTask () {
+let cleanTask = () => {
   return del(['dist', ''])
 }
 
-gulp.task('lib', libTask('src/lib'))
-gulp.task('build', ['style', 'lib'])
+let removeEmptyFiles = () => {
+  let array = ['img', 'css', 'lib', 'js']
+  array.forEach(emptyFiles => {
+    storage
+      .bucket(bucketName)
+      .file(`/event/${projectName}/${emptyFiles}`)
+      .delete()
+      .then(() => {
+        console.log(`gs://${bucketName}/${emptyFiles} deleted.`)
+      })
+      .catch(err => {
+        console.error('ERROR:', err)
+      })
+  })
+}
 
-gulp.task('package', function () {
-  var deferred = Q.defer()
-  Q.fcall(function () {
+gulp.task('uploadGcp', () => {
+  return gulp.src(['dist/**/*'])
+    .pipe(gcPub({
+      bucket: bucketName,
+      keyFilename: keyFilename,
+      projectId: projectId,
+      base: `/event/${projectName}`,
+      public: true,
+      transformDestination: path => {
+        return path
+      },
+      metadata: {
+        cacheControl: 'max-age=315360000, no-transform, public'
+      }
+    }))
+})
+
+gulp.task('removeEmptyFiles', () => {
+  removeEmptyFiles()
+})
+
+gulp.task('package', () => {
+  let deferred = Q.defer()
+  Q.fcall(() => {
     return util.logPromise(cleanTask)
-  }).then(function () {
+  }).then(() => {
     return Q.all([
-      util.logStream(libTask('dist/lib')),
       util.logStream(copyStaticTask('dist'))
     ])
   })
-
   return deferred.promise
 })

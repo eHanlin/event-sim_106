@@ -23,6 +23,7 @@
     "@google-cloud/storage": "^1.7.0",
     "block-ui": "2.70.1",
     "fs": "0.0.1-security",
+    "gulp-gcloud-publish": "^2.0.0",
     "jquery": "1.7.2",
     "moment": "2.13.0",
     "underscore": "1.8.3"
