@@ -1,6 +1,6 @@
 $(function () {
   var now = new Date()
-  var rootPath = document.getElementById('rootPath').getAttribute('data-value')
+  var rootPath = `https://s3-ap-northeast-1.amazonaws.com/ehanlin-web-resource/event-sim_106`
   var getBoard = function () {
     var $this = $(this)
     var year = $this.data('year')
@@ -25,8 +25,7 @@ $(function () {
 
   var blockFunc = function (info) {
     $.blockUI({
-      message:
-        "<div class='leader-boards'><span class='spanA'>106學年模擬會考 第一次全科1-4冊<br><br>" +
+      message: "<div class='leader-boards'><span class='spanA'>106學年模擬會考 第一次全科1-4冊<br><br>" +
         info +
         '</span>' +
         "<img class='listImgA' src='" +
@@ -44,13 +43,14 @@ $(function () {
         height: '490',
         cursor: 'default'
       },
-      overlayCSS: { backgroundColor: '#000', opacity: '0.4' },
+      overlayCSS: {
+        backgroundColor: '#000',
+        opacity: '0.4'
+      },
       onOverlayClick: $.unblockUI
     })
   }
 
-  // let rootPath =
-  //   "https://s3-ap-northeast-1.amazonaws.com/ehanlin-web-resource/event-sim_106/0.4.0-SNAPSHOT";
   Sim.getTermtest(106, 'complete', function (schedule) {
     _.each(schedule, function (it, idx) {
       if (now < it.start) {
@@ -88,9 +88,9 @@ $(function () {
       }
     })
 
-    $('.block0 .btnB img').on('click', function () {
+    let ajaxFunc = function (num) {
       ajaxGet(
-        'https://www.ehanlin.com.tw/sim_106/hero?year=106&volume=7&number=1',
+        `https://www.ehanlin.com.tw/sim_106/hero?year=106&volume=7&number=${num}`,
         null,
         function (jsonData) {
           let info
@@ -106,46 +106,17 @@ $(function () {
         },
         function () {}
       )
+    }
+    $('.block0 .btnB img').on('click', function () {
+      ajaxFunc(1)
     })
 
     $('.block1 .btnB img').on('click', function () {
-      ajaxGet(
-        'https://www.ehanlin.com.tw/sim_106/hero?year=106&volume=7&number=2',
-        null,
-        function (jsonData) {
-          let info
-
-          for (let index = 0; index < jsonData.length; index++) {
-            var userName = jsonData[index].userName
-            var userSchool = jsonData[index].school
-            let userInfoList = `<span class="number">第${index +
-              1}名</span><p class='userList'> ${userName}&nbsp;&nbsp;${userSchool}</p>`
-            info += userInfoList
-            blockFunc(info.replace('undefined', ''))
-          }
-        },
-        function () {}
-      )
+      ajaxFunc(2)
     })
 
     $('.block2 .btnB img').on('click', function () {
-      ajaxGet(
-        'https://www.ehanlin.com.tw/sim_106/hero?year=106&volume=7&number=3',
-        null,
-        function (jsonData) {
-          let info
-
-          for (let index = 0; index < jsonData.length; index++) {
-            var userName = jsonData[index].userName
-            var userSchool = jsonData[index].school
-            let userInfoList = `<span class="number">第${index +
-              1}名</span><p class='userList'> ${userName}&nbsp;&nbsp;${userSchool}</p>`
-            info += userInfoList
-            blockFunc(info.replace('undefined', ''))
-          }
-        },
-        function () {}
-      )
+      ajaxFunc(3)
     })
   })
 })
